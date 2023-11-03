@@ -1,19 +1,24 @@
 import { useContext } from 'react';
 import './header.style.css';
 import { CheckContext } from '../../context/check.context';
+import { DatasContext } from '../../context/data.context';
 
 const Header = () => {
   const { count } = useContext(CheckContext);
+  const { deleteDatas } = useContext(DatasContext);
 
-  //   const clearDataHandler = () => clearItemFromCart(cartItem);
+  const deleteDataHandler = () => deleteDatas();
+
   return (
     <>
       <div className="header-container">
         <div>
-          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+          <input type="checkbox" checked="checked" />
           <label>{count} files selected</label>
         </div>
-        <span className="dlt-text">DELETE</span>
+        <span className="dlt-text" onClick={deleteDataHandler}>
+          DELETE
+        </span>
       </div>
       <hr />
     </>

@@ -4,6 +4,8 @@ import { CheckContext } from '../../context/check.context';
 
 const Header = () => {
   const { count } = useContext(CheckContext);
+
+  //   const clearDataHandler = () => clearItemFromCart(cartItem);
   return (
     <>
       <div className="header-container">

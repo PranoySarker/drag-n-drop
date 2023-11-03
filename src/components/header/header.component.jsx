@@ -13,7 +13,7 @@ const Header = () => {
     <>
       <div className="header-container">
         <div>
-          <input type="checkbox" checked="checked" />
+          <input type="checkbox" checked="defaultChecked" readOnly />
           <label>{count} files selected</label>
         </div>
         <span className="dlt-text" onClick={deleteDataHandler}>

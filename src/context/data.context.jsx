@@ -11,14 +11,20 @@ export const DatasContext = createContext({
 export const DatasProvider = ({ children }) => {
   const [datas, setDatas] = useState(DATAS);
   const [checkBoxesData, setCheckBoxesData] = useState([]);
-  console.log(checkBoxesData);
+  //   console.log(checkBoxesData);
 
   const deleteDatas = () => {
     const newArray = datas.filter((item) => !checkBoxesData.includes(item));
     setDatas(newArray);
   };
 
-  const value = { datas, checkBoxesData, setCheckBoxesData, deleteDatas };
+  const value = {
+    datas,
+    setDatas,
+    checkBoxesData,
+    setCheckBoxesData,
+    deleteDatas,
+  };
 
   return (
     <DatasContext.Provider value={value}>{children}</DatasContext.Provider>

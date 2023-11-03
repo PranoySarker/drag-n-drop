@@ -19,6 +19,7 @@
   height: 100%;
   object-fit: cover;
   transition: 0.3s;
+  cursor: move;
 }
 
 .image:hover {

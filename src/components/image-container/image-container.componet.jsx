@@ -1,15 +1,19 @@
 import './image-container.style.css';
 // import DATA from '../../data.json';
-import { useState, useContext } from 'react';
+import { useContext, useRef } from 'react';
 
 import { CheckContext } from '../../context/check.context';
 import { DatasContext } from '../../context/data.context';
 
 const ImageContainer = () => {
-  const { datas, checkBoxesData, setCheckBoxesData } = useContext(DatasContext);
+  const { datas, setDatas, checkBoxesData, setCheckBoxesData } =
+    useContext(DatasContext);
   const { updateCounter } = useContext(CheckContext);
 
   //   const [isChecked, setIsChecked] = useState(false);
+
+  const dragItem = useRef(null);
+  const dragOveritem = useRef(null);
 
   const handleCheckboxChange = (e, data) => {
     updateCounter(e.target.checked);
@@ -21,6 +25,26 @@ const ImageContainer = () => {
     }
   };
 
+  // handle drag sorting
+  const handleSort = () => {
+    // duplicate items
+    let _items = [...datas];
+
+    // remove and save the drag item content
+    const draggedItemContent = _items.splice(dragItem.current, 1)[0];
+    console.log(draggedItemContent);
+
+    // switch the position
+    _items.splice(dragOveritem.current, 0, draggedItemContent);
+
+    // reset the position
+    dragItem.current = null;
+    dragOveritem.current = null;
+
+    // set the re-arraged array
+    setDatas(_items);
+  };
+
   return (
     <div>
       <div className="image-grid">
@@ -28,6 +52,11 @@ const ImageContainer = () => {
           <div
             key={data.id}
             className={`images ${index === 0 ? 'big-image' : ''}`}
+            draggable
+            onDragStart={() => (dragItem.current = index)}
+            onDragEnter={() => (dragOveritem.current = index)}
+            onDragEnd={handleSort}
+            onDragOver={(e) => e.preventDefault()}
           >
             <img src={data.imageUrl} alt="" className="image" />
             <div className="checkbox">

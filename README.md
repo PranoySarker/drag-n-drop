@@ -1,8 +1,17 @@
-# React + Vite
+# Drag-N-Drop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Please check the [Live Link](https://brilliant-truffle-7cdd04.netlify.app) to see explore the site.
 
-Currently, two official plugins are available:
+## Functionalities
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```python
+
+- It is an image gallery where users can drag and drop the position of the images.
+- select images and delete them.
+
+
+```
+
+## Deployment Issue
+
+- sometimes the live link give some warning try again or if there is a detail button click on it, then click proceed or visit the site. or try another browser.

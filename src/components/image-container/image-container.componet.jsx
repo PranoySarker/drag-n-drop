@@ -1,27 +1,26 @@
-import './image-container.style.css';
+import "./image-container.style.css";
 // import DATA from '../../data.json';
-import { useContext, useRef } from 'react';
+import { useContext, useRef } from "react";
 
-import { CheckContext } from '../../context/check.context';
-import { DatasContext } from '../../context/data.context';
+import { CheckContext } from "../../context/check.context";
+import { DatasContext } from "../../context/data.context";
 
 const ImageContainer = () => {
   const { datas, setDatas, checkBoxesData, setCheckBoxesData } =
     useContext(DatasContext);
   const { updateCounter } = useContext(CheckContext);
 
-  //   const [isChecked, setIsChecked] = useState(false);
-
   const dragItem = useRef(null);
   const dragOveritem = useRef(null);
 
+  // function to handle the checkbox with count value
   const handleCheckboxChange = (e, data) => {
     updateCounter(e.target.checked);
 
     if (e.target.checked) {
-      setCheckBoxesData([...checkBoxesData, data]);
+      setCheckBoxesData([...checkBoxesData, data]); //add the data to the array
     } else {
-      setCheckBoxesData(checkBoxesData.filter((item) => item !== data));
+      setCheckBoxesData(checkBoxesData.filter((item) => item !== data)); //if uncheck delete data from array
     }
   };
 
@@ -32,7 +31,7 @@ const ImageContainer = () => {
 
     // remove and save the drag item content
     const draggedItemContent = _items.splice(dragItem.current, 1)[0];
-    console.log(draggedItemContent);
+    // console.log(draggedItemContent);
 
     // switch the position
     _items.splice(dragOveritem.current, 0, draggedItemContent);
@@ -48,10 +47,11 @@ const ImageContainer = () => {
   return (
     <div>
       <div className="image-grid">
+        {/* load data */}
         {datas.map((data, index) => (
           <div
             key={data.id}
-            className={`images ${index === 0 ? 'big-image' : ''}`}
+            className={`images ${index === 0 ? "big-image" : ""}`}
             draggable
             onDragStart={() => (dragItem.current = index)}
             onDragEnter={() => (dragOveritem.current = index)}

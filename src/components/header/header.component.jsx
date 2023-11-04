@@ -15,6 +15,7 @@ const Header = () => {
   return (
     <>
       <div className="header-container">
+        {/* condition to change the header when counter value 0 */}
         {count > 0 ? (
           <div>
             <input type="checkbox" checked="defaultChecked" readOnly />

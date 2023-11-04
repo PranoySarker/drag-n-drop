@@ -4,10 +4,13 @@ import { CheckContext } from "../../context/check.context";
 import { DatasContext } from "../../context/data.context";
 
 const Header = () => {
-  const { count } = useContext(CheckContext);
+  const { count, setCount } = useContext(CheckContext);
   const { deleteDatas } = useContext(DatasContext);
 
-  const deleteDataHandler = () => deleteDatas();
+  const deleteDataHandler = () => {
+    deleteDatas();
+    setCount(0);
+  };
 
   return (
     <>

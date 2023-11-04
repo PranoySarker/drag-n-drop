@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext } from "react";
 
 export const CheckContext = createContext({
   count: 0,
@@ -11,7 +11,7 @@ export const CheckProvider = ({ children }) => {
   const updateCounter = (isChecked) => {
     setCount((prevCounter) => (isChecked ? prevCounter + 1 : prevCounter - 1));
   };
-  const value = { count, updateCounter };
+  const value = { count, setCount, updateCounter };
 
   return (
     <CheckContext.Provider value={value}>{children}</CheckContext.Provider>
